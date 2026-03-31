@@ -17,16 +17,17 @@
         <div class="signInText">
             Sign In
         </div><br>
-        <div class="signInInputs">
+        <form class="signInInputs" action="/login" method="post">
             <input type="text" placeholder="E-Mail/Username" name="username"/><br><br>
-            <input type="password" placeholder="Password" name="password"/>
-        </div>
+            <input type="password" placeholder="Password" name="password"/><br><br>
+            <input id="signInSubmit" type="submit" value="Sign In"/>
+        </form>
     </div>
     <div class="signUp">
         <div class="signUpText">
-            How could you, you still are not a User?
-        </div><br>
-        <input type="button" value="SignUp" onclick="signIn()">
+            How could you still not be a User?
+        </div><br><br>
+        <input type="button" value="SignUp" onclick="signUp()">
     </div>
 </div>
 

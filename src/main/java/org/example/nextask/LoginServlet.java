@@ -2,6 +2,7 @@ package org.example.nextask;
 
 import jakarta.servlet.annotation.WebServlet;
 
-@WebServlet
+@WebServlet("/login")
 public class LoginServlet {
+
 }

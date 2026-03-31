@@ -30,6 +30,22 @@ body {
     align-content: center;
 }
 
+#signInSubmit {
+    transition: ease-in 0.1s;
+    width: 35%;
+    color: #FCFAF9;
+    border-radius: 83px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #3AAF9F;
+}
+
+#signInSubmit:hover {
+    transition: ease-in 0.1s;
+    outline: 2.5px solid #FCFAF9;
+    outline-offset: -5px;
+}
+
 .signInInputs > input {
     width: 80%;
     border-radius: 83px;
@@ -37,10 +53,11 @@ body {
     border: none;
     min-height: 65px;
     font-size: 36px;
+    padding: 10px 20px;
 }
 
-.signInInput > input::placeholder {
-    color: rgb(4 57 94 / 0.6);
+.signInInputs > input::placeholder {
+    color: rgba(4, 57, 94, 0.6);
     margin-left: 0.5vw;
 }
 
@@ -55,12 +72,35 @@ body {
     width: 40%;
     height: 100%;
     align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
-.signUpInput > input {
+.signUpText {
+    color: #FCFAF9;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    align-self: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.signUp > input {
+    transition: ease-in 0.1s;
     background: transparent;
     border-radius: 83px;
-    border-style: solid;
-    border-color: #D3F2FF;
-    border-width: 2.5px;
+    border: 2.5px solid #FCFAF9;
+    font-size: 28px;
+    color: #FCFAF9;
+    width: 50%;
+    height: 40px;
+}
+
+.signUp > input:hover {
+    transition: ease-in 0.1s;
+    background: #FCFAF9;
+    border-radius: 83px;
+    border: none;
+    color: #3AAF9F;
 }
