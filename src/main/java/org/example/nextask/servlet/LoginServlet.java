@@ -23,31 +23,31 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        UserDAO dao = new UserDAO();
-        User user = null;
+//        UserDAO dao = new UserDAO();
+//        User user = null;
+//
+//        if (username == null || password == null) {
+//            return;
+//        }
+//
+//        if (username.contains("@")) {
+//            try {
+//                user = dao.searchUserByEmail(username);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            try {
+//                user = dao.searchUserByUsername(username);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        if (user == null) {
+//            return;
+//        }
 
-        if (username == null || password == null) {
-            return;
-        }
-
-        if (username.contains("@")) {
-            try {
-                user = dao.searchUserByEmail(username);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                user = dao.searchUserByUsername(username);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (user == null) {
-            return;
-        }
-
-        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
     }
 }

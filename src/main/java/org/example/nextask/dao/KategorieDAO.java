@@ -14,24 +14,6 @@ public class KategorieDAO {
         }
     }
 
-    public Kategorie searchKategorieByKategoriename(String kategoriename) {
-        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(Kategorie.class, kategoriename);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public Kategorie searchKategorieByEmail(String email) {
-        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(Kategorie.class, email);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public void createKategorie (Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
