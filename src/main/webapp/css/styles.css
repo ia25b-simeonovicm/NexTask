@@ -1,0 +1,9 @@
+body {
+    background: #D3F2FF;
+    margin: 0 !important;
+    display: flex;
+    height: 100vh;
+    font-family: 'Hanken Grotesk', sans-serif;
+    justify-content: center;
+    align-items: center;
+}
