@@ -22,10 +22,10 @@ public class User {
     @Column(name = "Password", nullable = false,  length = 50)
     private String Password;
 
-    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Kategorie> Kategorie = new ArrayList<>();
 
-    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ToDo> ToDo = new ArrayList<>();
 
     public User() {}

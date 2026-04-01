@@ -16,7 +16,9 @@ public class UserDAO {
 
     public User searchUserByUsername(String username) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(User.class, username);
+            return em.createQuery("SELECT u FROM User u WHERE u.Username = :Username", User.class)
+                    .setParameter("Username", username)
+                    .getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -25,7 +27,9 @@ public class UserDAO {
 
     public User searchUserByEmail(String email) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(User.class, email);
+            return em.createQuery("SELECT u FROM User u WHERE u.Email = :email", User.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
