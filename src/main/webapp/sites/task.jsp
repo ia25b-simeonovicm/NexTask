@@ -5,12 +5,14 @@
 <%@ page import="org.example.nextask.dao.KategorieDAO" %>
 <%@ page import="org.example.nextask.model.Kategorie" %>
 <%@ page import="org.example.nextask.dao.UserDAO" %>
+<%@ page import="org.example.nextask.model.User" %>
 <%
     ToDoDAO TodoDao = new ToDoDAO();
     KategorieDAO KatDao = new KategorieDAO();
     UserDAO UserDao = new UserDAO();
-
-    int userid = UserDao.searchUserByUsername();
+    HttpSession session = request.getSession(false);
+    User user = (User) session.getAttribute("user");
+    int userid = user.getUserID();
     List<ToDo> todos = TodoDao.getAllToDoByUser(userid);
     List<Kategorie> categories = KatDao.getAllKategorieByUser(userid);
 %>
