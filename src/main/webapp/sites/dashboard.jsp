@@ -3,16 +3,14 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
 </head>
 <body>
 <div>
     <div class="NavBar"> <!---------------------------NAVBAR------------------------------------------------->
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/sites/dashboard.jsp">Overview</a></li>
-            <li><a href="${pageContext.request.contextPath}/sites/task.jsp">Task</a></li>
-            <li><a href="${pageContext.request.contextPath}/sites/settings.jsp">Icon Settings</a></li>
-        </ul>
+        <a href="${pageContext.request.contextPath}/sites/dashboard.jsp">Overview</a>
+        <a href="${pageContext.request.contextPath}/sites/task.jsp">Task</a>
+        <a href="${pageContext.request.contextPath}/sites/settings.jsp">Icon Settings</a>
     </div>
     <div class="todaystask">
 
