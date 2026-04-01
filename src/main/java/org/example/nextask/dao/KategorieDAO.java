@@ -17,7 +17,7 @@ public class KategorieDAO {
             return null;
         }
     }
-    public List<Kategorie> searchcatByUser(int UserID) {
+    public List<Kategorie> getAllKategorieByUser(int UserID) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
             return em.createQuery("SELECT t FROM Kategorie t WHERE t.User.UserID = :UserID", Kategorie.class)
                     .setParameter("UserID", UserID)

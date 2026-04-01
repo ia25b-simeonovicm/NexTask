@@ -18,7 +18,7 @@ public class ToDoDAO {
             return null;
         }
     }
-    public List<ToDo> searchTaskByUser(int UserID) {
+    public List<ToDo> getAllToDoByUser(int UserID) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
             return em.createQuery("SELECT t FROM ToDo t WHERE t.User.UserID = :UserID", ToDo.class)
                     .setParameter("UserID", UserID)
