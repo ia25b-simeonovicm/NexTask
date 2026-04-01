@@ -13,9 +13,10 @@
             <input type="text" placeholder="E-Mail/Username" name="username"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
             <input id="signInSubmit" type="submit" value="Sign In"/>
-            <c:if test="${not empty error}">
+            <input type="hidden" name="browser" value="${header['user-agent']}">
+            <c:if test="${not empty error_signIn}">
                 <div class="error-message">
-                        ${error}
+                        ${error_signIn}
                 </div>
             </c:if>
         </form>
@@ -28,7 +29,13 @@
             <input type="text" placeholder="Username" name="username"/><br><br>
             <input type="email" placeholder="E-Mail" name="email"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
+            <input type="hidden" name="browser" value="${header['user-agent']}">
             <input id="signInSubmit" type="submit" value="Register"/>
+            <c:if test="${not empty error_signUp}">
+                <div class="error-message">
+                        ${error_signUp}
+                </div>
+            </c:if>
         </form>
         <input type="button" id="switchBtn" value="Sign Up" onclick="switchForm()"/>
     </div>

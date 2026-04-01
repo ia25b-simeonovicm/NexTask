@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (user == null) {
-            request.setAttribute("error", "Benutzer nicht gefunden.");
+            request.setAttribute("error_signIn", "Benutzer nicht gefunden.");
             request.getRequestDispatcher("index.jsp").forward(request, response);
             return;
         }
@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
         if (password.equals(user.getPassword())) {
             request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "Falsches Passwort.");
+            request.setAttribute("error_signIn", "Falsches Passwort.");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
