@@ -4,6 +4,9 @@ import jakarta.persistence.EntityManager;
 import org.example.nextask.model.ToDo;
 import org.example.nextask.util.JPAUtil;
 
+
+import java.util.List;
+
 public class ToDoDAO {
     public ToDo searchToDoById(int id) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
@@ -11,6 +14,18 @@ public class ToDoDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public List<ToDo> getAllToDo() {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery("SELECT u FROM User u", ToDo.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            em.close();
         }
     }
 

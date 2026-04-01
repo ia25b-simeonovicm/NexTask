@@ -23,14 +23,18 @@ public class Kategorie {
     @ManyToMany(mappedBy = "Kategorie")
     private List<ToDo> ToDo = new ArrayList<>();
 
+    @Column(name = "color")
+    private String color;
+
     public Kategorie() {
     }
 
-    public Kategorie(int KategorieID, String Name, User user, List<ToDo> toDo) {
-        this.KategorieID = KategorieID;
-        this.Name = Name;
+    public Kategorie(int kategorieID, String name, User user, List<ToDo> toDo, String color) {
+        this.KategorieID = kategorieID;
+        this.Name = name;
         this.User = user;
         this.ToDo = toDo;
+        this.color = color;
     }
 
     public int getKategorieID() {
@@ -63,5 +67,13 @@ public class Kategorie {
 
     public void setToDo(List<ToDo> toDo) {
         ToDo = toDo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

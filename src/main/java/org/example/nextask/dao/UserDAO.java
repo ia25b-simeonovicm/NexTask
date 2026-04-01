@@ -1,8 +1,11 @@
 package org.example.nextask.dao;
 
 import jakarta.persistence.EntityManager;
+import org.example.nextask.model.ToDo;
 import org.example.nextask.model.User;
 import org.example.nextask.util.JPAUtil;
+
+import java.util.List;
 
 public class UserDAO {
     public User searchUserById(int id) {
@@ -33,6 +36,18 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public List<User> getAllUsers() {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery("SELECT u FROM User u", User.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            em.close();
         }
     }
 
