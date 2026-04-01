@@ -23,6 +23,8 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        System.out.println("username: " + username);
+
 //        UserDAO dao = new UserDAO();
 //        User user = null;
 //
@@ -48,6 +50,6 @@ public class LoginServlet extends HttpServlet {
 //            return;
 //        }
 
-        request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/sites/dashboard.jsp").forward(request, response);
     }
 }

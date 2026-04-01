@@ -13,7 +13,7 @@
 <div class="loginBackground">
     <div class="signIn" id="signInHolder">
         <div class="signInText">Sign In</div><br>
-        <form class="signInInputs" action="/login" method="post">
+        <form class="signInInputs" action="/NexTask/login" method="post">
             <input type="text" placeholder="E-Mail/Username" name="username"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
             <input id="signInSubmit" type="submit" value="Sign In"/>
@@ -23,7 +23,7 @@
         <div class="signUpText">
             How could you still not be a user?
         </div><br><br>
-        <form class="signInInputs" action="/register" method="post" id="signUpForm" style="display:none;">
+        <form class="signInInputs" action="register" method="post" id="signUpForm" style="display:none;">
             <input type="text" placeholder="Username" name="username"/><br><br>
             <input type="email" placeholder="E-Mail" name="email"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
