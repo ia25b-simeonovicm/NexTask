@@ -2,9 +2,7 @@ package org.example.nextask.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import org.example.nextask.dao.UserDAO;
 import org.example.nextask.model.User;
 
@@ -18,6 +16,18 @@ public class RegisterServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+                if (c.getName().equals("username")) {
+                    HttpSession session = request.getSession(false);
+                    User user = (User) session.getAttribute("user");
+                    request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
+                    return;
+                }
+            }
+        }
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
@@ -48,7 +58,11 @@ public class RegisterServlet extends HttpServlet {
 
         dao.createUser(user);
 
-
+        Cookie cookie = new Cookie("username", username );
+        cookie.setMaxAge(60 * 60);
+        response.addCookie(cookie);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
         request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
     }
 }
