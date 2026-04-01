@@ -1,4 +1,5 @@
 package org.example.nextask.model;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class ToDo {
     @Column(name = "ToDoID")
     private int ToDoID;
 
-    @Column(name = "Title",unique = true, nullable = false, length = 50)
+    @Column(name = "Title", unique = true, nullable = false, length = 50)
     private String Title;
 
     @Column(name = "Description", length = 350)
@@ -43,7 +44,9 @@ public class ToDo {
     private List<Kategorie> Kategorie = new ArrayList<>();
 
     // In Kategorie.java — inverse side
-    public ToDo (){}
+    public ToDo() {
+    }
+
     public ToDo(int toDoID, String title, String description, Boolean isDone, Date createdAt, Date ablaufdatum, User user, List<Kategorie> kategorie) {
         ToDoID = toDoID;
         Title = title;

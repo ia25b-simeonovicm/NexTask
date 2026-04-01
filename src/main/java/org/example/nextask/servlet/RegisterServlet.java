@@ -24,16 +24,20 @@ public class RegisterServlet extends HttpServlet {
 
         if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             request.setAttribute("error_signUp", "Please fill all the fields");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
         }
 
-        UserDAO dao =  new UserDAO();
+        UserDAO dao = new UserDAO();
         if (dao.searchUserByUsername(username) != null) {
             request.setAttribute("error_signUp", "Username is already in use");
             request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
         }
         if (dao.searchUserByEmail(email) != null) {
             request.setAttribute("error_signUp", "Email is already in use");
             request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
 
         }
 

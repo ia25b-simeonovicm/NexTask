@@ -13,13 +13,13 @@ public class User {
     @Column(name = "UserID")
     private int UserID;
 
-    @Column(name = "Email",unique = true, nullable = false, length = 50)
+    @Column(name = "Email", unique = true, nullable = false, length = 50)
     private String Email;
 
-    @Column(name = "Username",unique = true , nullable = false, length = 50)
+    @Column(name = "Username", unique = true, nullable = false, length = 50)
     private String Username;
 
-    @Column(name = "Password", nullable = false,  length = 50)
+    @Column(name = "Password", nullable = false, length = 50)
     private String Password;
 
     @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -28,7 +28,9 @@ public class User {
     @OneToMany(mappedBy = "User", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ToDo> ToDo = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
+
     public User(int userID, String email, String username, String password, List<Kategorie> kategorie, List<ToDo> toDo) {
         UserID = userID;
         Email = email;

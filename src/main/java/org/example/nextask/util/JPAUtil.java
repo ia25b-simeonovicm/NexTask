@@ -8,7 +8,8 @@ public class JPAUtil {
     private static final EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("NexTask");
 
-    private JPAUtil() {}
+    private JPAUtil() {
+    }
 
     public static EntityManagerFactory getEntityManagerFactory() {
         return emf;

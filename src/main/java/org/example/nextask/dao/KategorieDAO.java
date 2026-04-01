@@ -14,7 +14,7 @@ public class KategorieDAO {
         }
     }
 
-    public void createKategorie (Kategorie kategorie) {
+    public void createKategorie(Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -28,7 +28,7 @@ public class KategorieDAO {
         }
     }
 
-    public void updateKategorie (Kategorie kategorie) {
+    public void updateKategorie(Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -42,7 +42,7 @@ public class KategorieDAO {
         }
     }
 
-    public void deleteKategorie (int id) {
+    public void deleteKategorie(int id) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();

@@ -36,7 +36,7 @@ public class UserDAO {
         }
     }
 
-    public void createUser (User user) {
+    public void createUser(User user) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -50,7 +50,7 @@ public class UserDAO {
         }
     }
 
-    public void updateUser (User user) {
+    public void updateUser(User user) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -64,7 +64,7 @@ public class UserDAO {
         }
     }
 
-    public void deleteUser (int id) {
+    public void deleteUser(int id) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();

@@ -14,7 +14,7 @@ public class ToDoDAO {
         }
     }
 
-    public void createToDo (ToDo todo) {
+    public void createToDo(ToDo todo) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -28,7 +28,7 @@ public class ToDoDAO {
         }
     }
 
-    public void updateToDo (ToDo todo) {
+    public void updateToDo(ToDo todo) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
@@ -42,7 +42,7 @@ public class ToDoDAO {
         }
     }
 
-    public void deleteToDo (int id) {
+    public void deleteToDo(int id) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();

@@ -6,17 +6,25 @@ const signUpForm = document.getElementById("signUpForm");
 
 function switchForm() {
     if (!isSignUp) {
-        signUpHolder.style.width = "100%";
-        signUpHolder.style.borderRadius = "100px";
-        signInDiv.style.opacity = "0";
-        switchBtn.value = "Sign In";
-        signUpForm.style.display = "block";
-        isSignUp = true;
+        showSignUp();
     } else {
-        signUpHolder.style.width = "45%";
-        signInDiv.style.opacity = "1";
-        switchBtn.value = "Sign Up";
-        signUpForm.style.display = "none";
-        isSignUp = false;
+        showSignIn();
     }
+}
+
+function showSignUp() {
+    signUpHolder.style.width = "100%";
+    signUpHolder.style.borderRadius = "100px";
+    signInDiv.style.opacity = "0";
+    switchBtn.value = "Sign In";
+    signUpForm.style.display = "block";
+    isSignUp = true;
+}
+
+function showSignIn() {
+    signUpHolder.style.width = "45%";
+    signInDiv.style.opacity = "1";
+    switchBtn.value = "Sign Up";
+    signUpForm.style.display = "none";
+    isSignUp = false;
 }

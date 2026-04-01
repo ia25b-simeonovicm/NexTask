@@ -7,13 +7,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "Kategorie")
-public class Kategorie{
+public class Kategorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "KategorieID")
     private int KategorieID;
 
-    @Column(name = "Name",unique = true , nullable = false, length = 50)
+    @Column(name = "Name", unique = true, nullable = false, length = 50)
     private String Name;
 
     @ManyToOne
@@ -23,7 +23,9 @@ public class Kategorie{
     @ManyToMany(mappedBy = "Kategorie")
     private List<ToDo> ToDo = new ArrayList<>();
 
-    public Kategorie() {}
+    public Kategorie() {
+    }
+
     public Kategorie(int KategorieID, String Name, User user, List<ToDo> toDo) {
         this.KategorieID = KategorieID;
         this.Name = Name;

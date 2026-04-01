@@ -24,6 +24,7 @@ body {
     font-size: 96px;
     font-weight: bold;
 }
+
 .signIn {
     text-align: center;
     width: 60%;
@@ -118,4 +119,10 @@ body {
     border-radius: 5px;
     margin: 10px auto;
     width: 50%;
+}
+
+#switchBtn {
+    width: 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
 }
