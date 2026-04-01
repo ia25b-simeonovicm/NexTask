@@ -33,9 +33,16 @@ public class ToDo {
     @JoinColumn(name = "UserID")
     private User User;
 
-    @ManyToMany(mappedBy = "TodoKategorie")
+    // In ToDo.java — owning side
+    @ManyToMany
+    @JoinTable(
+            name = "TodoKategorie",
+            joinColumns = @JoinColumn(name = "TodoID"),
+            inverseJoinColumns = @JoinColumn(name = "KategorieID")
+    )
     private List<Kategorie> Kategorie = new ArrayList<>();
 
+    // In Kategorie.java — inverse side
     public ToDo (){}
     public ToDo(int toDoID, String title, String description, Boolean isDone, Date createdAt, Date ablaufdatum, User user, List<Kategorie> kategorie) {
         ToDoID = toDoID;

@@ -11,40 +11,40 @@ public class Kategorie{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "KategorieID")
-    private int UserID;
+    private int KategorieID;
 
     @Column(name = "Name",unique = true , nullable = false, length = 50)
-    private String Username;
+    private String Name;
 
     @ManyToOne
     @JoinColumn(name = "UserID")
     private User User;
 
-    @ManyToMany(mappedBy = "TodoKategorie")
+    @ManyToMany(mappedBy = "kategorien")
     private List<ToDo> ToDo = new ArrayList<>();
 
     public Kategorie() {}
-    public Kategorie(int userID, String username, User user, List<ToDo> toDo) {
-        UserID = userID;
-        Username = username;
+    public Kategorie(int KategorieID, String Name, User user, List<ToDo> toDo) {
+        KategorieID = KategorieID;
+        Name = Name;
         User = user;
         ToDo = toDo;
     }
 
-    public int getUserID() {
-        return UserID;
+    public int getKategorieID() {
+        return KategorieID;
     }
 
-    public void setUserID(int userID) {
-        UserID = userID;
+    public void setKategorieID(int KategorieID) {
+        KategorieID = KategorieID;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getName() {
+        return Name;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setName(String Name) {
+        Name = Name;
     }
 
     public User getUser() {
