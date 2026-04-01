@@ -2,9 +2,11 @@ package org.example.nextask.dao;
 
 import jakarta.persistence.EntityManager;
 import org.example.nextask.model.ToDo;
+import org.example.nextask.model.User;
 import org.example.nextask.util.JPAUtil;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoDAO {
@@ -16,11 +18,20 @@ public class ToDoDAO {
             return null;
         }
     }
-
+    public List<ToDo> searchTaskByUser(int UserID) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.createQuery("SELECT t FROM ToDo t WHERE t.User.UserID = :UserID", ToDo.class)
+                    .setParameter("UserID", UserID)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     public List<ToDo> getAllToDo() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
-            return em.createQuery("SELECT u FROM User u", ToDo.class).getResultList();
+            return em.createQuery("SELECT t FROM ToDo t", ToDo.class).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
