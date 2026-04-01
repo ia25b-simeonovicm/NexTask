@@ -110,3 +110,12 @@ body {
     border: none;
     color: #3AAF9F;
 }
+
+.error-message {
+    color: red;
+    background-color: #FCFAF9;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 50%;
+}

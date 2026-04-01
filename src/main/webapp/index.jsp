@@ -13,6 +13,11 @@
             <input type="text" placeholder="E-Mail/Username" name="username"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
             <input id="signInSubmit" type="submit" value="Sign In"/>
+            <c:if test="${not empty error}">
+                <div class="error-message">
+                        ${error}
+                </div>
+            </c:if>
         </form>
     </div>
     <div class="signUp" id="signUpHolder">

@@ -25,31 +25,38 @@ public class LoginServlet extends HttpServlet {
 
         System.out.println("username: " + username);
 
-//        UserDAO dao = new UserDAO();
-//        User user = null;
-//
-//        if (username == null || password == null) {
-//            return;
-//        }
-//
-//        if (username.contains("@")) {
-//            try {
-//                user = dao.searchUserByEmail(username);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            try {
-//                user = dao.searchUserByUsername(username);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (user == null) {
-//            return;
-//        }
+        UserDAO dao = new UserDAO();
+        User user = null;
 
-        request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
+        if (username == null || password == null) {
+            return;
+        }
+
+        if (username.contains("@")) {
+            try {
+                user = dao.searchUserByEmail(username);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                user = dao.searchUserByUsername(username);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (user == null) {
+            request.setAttribute("error", "Benutzer nicht gefunden.");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
+        }
+
+        if (password.equals(user.getPassword())) {
+            request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
+        } else {
+            request.setAttribute("error", "Falsches Passwort.");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 }

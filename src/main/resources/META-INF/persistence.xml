@@ -22,7 +22,7 @@
 
             <!-- WICHTIG: createDatabaseIfNotExist=true erstellt die Datenbank automatisch! -->
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/NexTaskdb"/>
+                      value="jdbc:mysql://localhost:3306/NexTaskdb?createDatabaseIfNotExist=true"/>
 
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="hello12345"/>
