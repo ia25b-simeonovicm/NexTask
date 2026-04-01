@@ -4,15 +4,19 @@
 <%@ page import="org.example.nextask.dao.ToDoDAO" %>
 <%@ page import="org.example.nextask.dao.KategorieDAO" %>
 <%@ page import="org.example.nextask.model.Kategorie" %>
-<%@ page import="org.example.nextask.dao.UserDAO" %>
 <%@ page import="org.example.nextask.model.User" %>
 <%
     ToDoDAO TodoDao = new ToDoDAO();
     KategorieDAO KatDao = new KategorieDAO();
-    UserDAO UserDao = new UserDAO();
-    HttpSession session = request.getSession(false);
+
     User user = (User) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        return;
+    }
+
     int userid = user.getUserID();
+
     List<ToDo> todos = TodoDao.getAllToDoByUser(userid);
     List<Kategorie> categories = KatDao.getAllKategorieByUser(userid);
 %>
@@ -29,6 +33,7 @@
     .category-<%= category.getName() %> {
         background: <%= category.getColor() %>;
     }
+
     <% } %>
 </style>
 <body>
@@ -56,7 +61,9 @@
     } else { %>
     <div>Keine Todos erstellt...</div>
     <% } %>
-
+    <div class="addBtn">
+        <a href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
+    </div>
 </main>
 </body>
 </html>

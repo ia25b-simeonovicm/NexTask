@@ -155,3 +155,14 @@ nav {
     line-height: 1.4;
     opacity: 0.9;
 }
+
+.addBtn {
+    background: #3AAF9F;
+    border: none;
+    color: #031D44;
+    cursor: pointer;
+    border-radius: 250px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

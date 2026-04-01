@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(cookie);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("/sites/task.jsp").forward(request, response);
         } else {
             request.setAttribute("error_signIn", "Falsches Passwort.");
             request.getRequestDispatcher("index.jsp").forward(request, response);
