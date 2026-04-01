@@ -50,6 +50,6 @@ public class LoginServlet extends HttpServlet {
 //            return;
 //        }
 
-        request.getRequestDispatcher("/sites/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
     }
 }
