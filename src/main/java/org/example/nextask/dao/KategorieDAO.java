@@ -1,24 +1,42 @@
 package org.example.nextask.dao;
 
 import jakarta.persistence.EntityManager;
-import org.example.nextask.model.ToDo;
+import org.example.nextask.model.Kategorie;
 import org.example.nextask.util.JPAUtil;
 
-public class ToDoDAO {
-    public ToDo searchToDoById(int id) {
+public class KategorieDAO {
+    public Kategorie searchKategorieById(int id) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(ToDo.class, id);
+            return em.find(Kategorie.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public void createToDo (ToDo todo) {
+    public Kategorie searchKategorieByKategoriename(String kategoriename) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.find(Kategorie.class, kategoriename);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Kategorie searchKategorieByEmail(String email) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.find(Kategorie.class, email);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void createKategorie (Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(todo);
+            em.persist(kategorie);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -28,11 +46,11 @@ public class ToDoDAO {
         }
     }
 
-    public void updateToDo (ToDo todo) {
+    public void updateKategorie (Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(todo);
+            em.merge(kategorie);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -42,13 +60,13 @@ public class ToDoDAO {
         }
     }
 
-    public void deleteToDo (int id) {
+    public void deleteKategorie (int id) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            ToDo todo = em.find(ToDo.class, id);
-            if (todo != null) {
-                em.remove(todo);
+            Kategorie kategorie = em.find(Kategorie.class, id);
+            if (kategorie != null) {
+                em.remove(kategorie);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
