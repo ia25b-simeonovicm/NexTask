@@ -1,10 +1,8 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: jamie
   Date: 31.03.2026
   Time: 14:20
-  To change this template use File | Settings | File Templates.
 --%>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,23 +11,27 @@
 </head>
 <body>
 <div class="loginBackground">
-    <div class="signIn">
-        <div class="signInText">
-            Sign In
-        </div><br>
+    <div class="signIn" id="signInHolder">
+        <div class="signInText">Sign In</div><br>
         <form class="signInInputs" action="/login" method="post">
             <input type="text" placeholder="E-Mail/Username" name="username"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
             <input id="signInSubmit" type="submit" value="Sign In"/>
         </form>
     </div>
-    <div class="signUp">
+    <div class="signUp" id="signUpHolder">
         <div class="signUpText">
-            How could you still not be a User?
+            How could you still not be a user?
         </div><br><br>
-        <input type="button" value="SignUp" onclick="signUp()">
+        <form class="signInInputs" action="/register" method="post" id="signUpForm" style="display:none;">
+            <input type="text" placeholder="Username" name="username"/><br><br>
+            <input type="email" placeholder="E-Mail" name="email"/><br><br>
+            <input type="password" placeholder="Password" name="password"/><br><br>
+            <input id="signInSubmit" type="submit" value="Register"/>
+        </form>
+        <input type="button" id="switchBtn" value="Sign Up" onclick="switchForm()">
     </div>
 </div>
-
+<script src="javascript/loginAnimation.js"></script>
 </body>
 </html>
