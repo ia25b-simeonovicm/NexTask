@@ -25,10 +25,10 @@ public class Kategorie{
 
     public Kategorie() {}
     public Kategorie(int KategorieID, String Name, User user, List<ToDo> toDo) {
-        KategorieID = KategorieID;
-        Name = Name;
-        User = user;
-        ToDo = toDo;
+        this.KategorieID = KategorieID;
+        this.Name = Name;
+        this.User = user;
+        this.ToDo = toDo;
     }
 
     public int getKategorieID() {
@@ -36,7 +36,7 @@ public class Kategorie{
     }
 
     public void setKategorieID(int KategorieID) {
-        KategorieID = KategorieID;
+        this.KategorieID = KategorieID;
     }
 
     public String getName() {
@@ -44,7 +44,7 @@ public class Kategorie{
     }
 
     public void setName(String Name) {
-        Name = Name;
+        this.Name = Name;
     }
 
     public User getUser() {
