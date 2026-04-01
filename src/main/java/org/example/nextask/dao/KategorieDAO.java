@@ -5,6 +5,7 @@ import org.example.nextask.model.Kategorie;
 import org.example.nextask.model.ToDo;
 import org.example.nextask.util.JPAUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class KategorieDAO {
@@ -16,7 +17,16 @@ public class KategorieDAO {
             return null;
         }
     }
-
+    public List<Kategorie> searchcatByUser(int UserID) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.createQuery("SELECT t FROM Kategorie t WHERE t.User.UserID = :UserID", Kategorie.class)
+                    .setParameter("UserID", UserID)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     public List<Kategorie> getAllCategories() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
