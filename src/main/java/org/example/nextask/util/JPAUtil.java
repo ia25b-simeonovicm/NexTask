@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 public class JPAUtil {
 
     private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("mitarbeiter");
+            Persistence.createEntityManagerFactory("NexTask");
 
     private JPAUtil() {}
 
