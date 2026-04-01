@@ -1,15 +1,14 @@
 :root {
-    --bg-color: #e3f5fc;       /* Heller blauer Hintergrund */
-    --nav-bg: #ffffff;         /* Navbar Hintergrund */
-    --text-color: #112c58;     /* Dunkle Schrift für Nav */
-    --active-nav-bg: #addbe6;  /* Aktiver Nav-Item Hintergrund */
+    --bg-color: #e3f5fc;
+    --nav-bg: #ffffff;
+    --text-color: #112c58;
+    --active-nav-bg: #addbe6;
 
-    /* Aufgaben Kategorien Farben (aus dem Bild) */
-    --cat-work: #9a53e6;       /* Violett */
-    --cat-personal: #8df08d;   /* Hellgrün */
-    --cat-urgent: #e65c5c;     /* Rot */
-    --cat-ideas: #f5e45a;      /* Gelb */
-    --cat-misc: #71beed;       /* Hellblau */
+    --cat-work: #9a53e6;
+    --cat-personal: #8df08d;
+    --cat-urgent: #e65c5c;
+    --cat-ideas: #f5e45a;
+    --cat-misc: #71beed;
 }
 
 * {
@@ -25,13 +24,15 @@ body {
     min-height: 100vh;
 }
 
-/* Header & Navigation */
 .navbar {
     background-color: var(--nav-bg);
     padding: 15px 60px;
     display: flex;
     justify-content: flex-end;
     box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
@@ -50,7 +51,6 @@ nav {
     transition: color 0.3s ease;
 }
 
-/* Neuer eleganter Indikator anstelle der Box */
 .nav-item::after {
     content: "";
     position: absolute;
@@ -80,7 +80,6 @@ nav {
     transform: translateY(0) scaleX(1);
 }
 
-/* Main Grid Layout */
 .grid-container {
     padding: 50px 60px;
     display: grid;
@@ -91,7 +90,6 @@ nav {
     margin: 0 auto;
 }
 
-/* To-Do Card */
 .todo-card {
     aspect-ratio: 1 / 1;
     border-radius: 35px; /* Sehr abgerundete Ecken */
@@ -112,14 +110,12 @@ nav {
     box-shadow: 0 15px 25px rgba(0,0,0,0.1);
 }
 
-/* Kategorie Farbzuweisungen */
 .category-work { background-color: var(--cat-work); }
 .category-personal { background-color: var(--cat-personal); }
 .category-urgent { background-color: var(--cat-urgent); }
 .category-ideas { background-color: var(--cat-ideas); }
 .category-misc { background-color: var(--cat-misc); }
 
-/* Inhalt der Karten (versteckt per default, wie im Bild) */
 .todo-content {
     opacity: 0;
     transform: translateY(15px);
@@ -128,7 +124,6 @@ nav {
     color: white;
 }
 
-/* Dunkle Schrift für helle Karten */
 .category-ideas .todo-content,
 .category-personal .todo-content {
     color: var(--text-color);
