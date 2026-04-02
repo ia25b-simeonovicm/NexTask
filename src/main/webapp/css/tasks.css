@@ -157,12 +157,28 @@ nav {
 }
 
 .addBtn {
-    background: #3AAF9F;
-    border: none;
-    color: #031D44;
-    cursor: pointer;
-    border-radius: 250px;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3AAF9F, #2d8f82);
+    box-shadow: 0 6px 20px rgba(58, 175, 159, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+    text-decoration: none;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
+    z-index: 999;
+}
+
+.addBtn:hover {
+    transform: scale(1.15) rotate(90deg);
+    box-shadow: 0 10px 30px rgba(58, 175, 159, 0.6);
 }

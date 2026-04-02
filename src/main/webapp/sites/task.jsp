@@ -6,14 +6,16 @@
 <%@ page import="org.example.nextask.model.Kategorie" %>
 <%@ page import="org.example.nextask.model.User" %>
 <%
-    ToDoDAO TodoDao = new ToDoDAO();
-    KategorieDAO KatDao = new KategorieDAO();
-
     User user = (User) session.getAttribute("user");
+
     if (user == null) {
         response.sendRedirect(request.getContextPath() + "/index.jsp");
         return;
     }
+
+
+    ToDoDAO TodoDao = new ToDoDAO();
+    KategorieDAO KatDao = new KategorieDAO();
 
     int userid = user.getUserID();
 
@@ -41,7 +43,7 @@
     <nav>
         <a href="#" class="nav-item">Overview</a>
         <a href="#" class="nav-item active">Tasks</a>
-        <a href="#" class="nav-item">Icon</a>
+        <span class="nav-item">👤 <%= user.getUsername() %></span>
     </nav>
 </header>
 <main class="grid-container" id="todo-container">
@@ -61,9 +63,7 @@
     } else { %>
     <div>Keine Todos erstellt...</div>
     <% } %>
-    <div class="addBtn">
-        <a href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
-    </div>
+    <a class="addBtn" href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
 </main>
 </body>
 </html>

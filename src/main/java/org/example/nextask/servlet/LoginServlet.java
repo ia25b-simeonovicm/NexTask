@@ -20,19 +20,6 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (c.getName().equals("username")) {
-                    HttpSession session = request.getSession(false);
-                    if (session != null) {
-                        request.getRequestDispatcher("sites/dashboard.jsp").forward(request, response);
-                        return;
-                    }
-                }
-            }
-        }
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
