@@ -41,7 +41,7 @@ body {
     border-radius: 83px;
     font-size: 20px;
     font-weight: bold;
-    background: #3AAF9F;
+    background: linear-gradient(135deg, #3AAF9F, #2d8f82);
 }
 
 #signInSubmit:hover {
@@ -71,7 +71,7 @@ body {
 }
 
 .signUp {
-    background: #3AAF9F;
+    background: linear-gradient(135deg, #3AAF9F, #2d8f82);
     border-radius: 100px;
     width: 40%;
     height: 100%;

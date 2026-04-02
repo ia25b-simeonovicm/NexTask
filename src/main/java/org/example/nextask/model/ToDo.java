@@ -2,9 +2,7 @@ package org.example.nextask.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 
 @Entity
@@ -25,29 +23,27 @@ public class ToDo {
     private Boolean IsDone;
 
     @Column(name = "CreatedAt")
-    private Date CreatedAt;
+    private LocalDate CreatedAt;
 
     @Column(name = "Ablaufdatum")
-    private Date Ablaufdatum;
+    private LocalDate Ablaufdatum;
 
     @ManyToOne
     @JoinColumn(name = "UserID")
     private User User;
 
-    // In ToDo.java — owning side
-    @ManyToMany
+    @ManyToOne
     @JoinTable(
             name = "TodoKategorie",
             joinColumns = @JoinColumn(name = "TodoID"),
             inverseJoinColumns = @JoinColumn(name = "KategorieID")
     )
-    private List<Kategorie> Kategorie = new ArrayList<>();
+    private Kategorie Kategorie;
 
-    // In Kategorie.java — inverse side
     public ToDo() {
     }
 
-    public ToDo(int toDoID, String title, String description, Boolean isDone, Date createdAt, Date ablaufdatum, User user, List<Kategorie> kategorie) {
+    public ToDo(int toDoID, String title, String description, Boolean isDone, LocalDate createdAt, LocalDate ablaufdatum, User user, Kategorie kategorie) {
         ToDoID = toDoID;
         Title = title;
         Description = description;
@@ -90,19 +86,19 @@ public class ToDo {
         IsDone = done;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return CreatedAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         CreatedAt = createdAt;
     }
 
-    public Date getAblaufdatum() {
+    public LocalDate getAblaufdatum() {
         return Ablaufdatum;
     }
 
-    public void setAblaufdatum(Date ablaufdatum) {
+    public void setAblaufdatum(LocalDate ablaufdatum) {
         Ablaufdatum = ablaufdatum;
     }
 
@@ -114,11 +110,11 @@ public class ToDo {
         User = user;
     }
 
-    public List<Kategorie> getKategorie() {
+    public Kategorie getKategorie() {
         return Kategorie;
     }
 
-    public void setKategorie(List<Kategorie> kategorie) {
+    public void setKategorie(Kategorie kategorie) {
         Kategorie = kategorie;
     }
 }

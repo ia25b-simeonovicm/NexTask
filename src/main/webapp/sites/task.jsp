@@ -27,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do Template (JSP)</title>
+    <title>To-Do Template</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tasks.css">
 </head>
 <style>
@@ -56,7 +56,7 @@
             <div class="todo-title"><%= todo.getTitle() %>
             </div>
             <div class="todo-desc"><%= todo.getDescription() %>
-            </div>
+            </div>l
         </div>
     </div>
     <% }

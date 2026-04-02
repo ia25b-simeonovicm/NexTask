@@ -20,7 +20,7 @@ public class Kategorie {
     @JoinColumn(name = "UserID")
     private User User;
 
-    @ManyToMany(mappedBy = "Kategorie")
+    @OneToMany(mappedBy = "Kategorie")
     private List<ToDo> ToDo = new ArrayList<>();
 
     @Column(name = "color")

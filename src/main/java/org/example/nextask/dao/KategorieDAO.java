@@ -27,6 +27,19 @@ public class KategorieDAO {
             return new ArrayList<>();
         }
     }
+    public Kategorie getAllKategorieByUserAndName(int userID, String name) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.createQuery(
+                            "SELECT k FROM Kategorie k WHERE k.User.UserID = :userID AND k.Name = :name",
+                            Kategorie.class)
+                    .setParameter("userID", userID)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public List<Kategorie> getAllCategories() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
