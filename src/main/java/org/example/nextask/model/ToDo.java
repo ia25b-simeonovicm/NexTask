@@ -33,11 +33,7 @@ public class ToDo {
     private User User;
 
     @ManyToOne
-    @JoinTable(
-            name = "TodoKategorie",
-            joinColumns = @JoinColumn(name = "TodoID"),
-            inverseJoinColumns = @JoinColumn(name = "KategorieID")
-    )
+    @JoinColumn(name = "KategorieID")
     private Kategorie Kategorie;
 
     public ToDo() {
@@ -113,7 +109,7 @@ public class ToDo {
     public Kategorie getKategorie() {
         return Kategorie;
     }
-
+    
     public void setKategorie(Kategorie kategorie) {
         Kategorie = kategorie;
     }

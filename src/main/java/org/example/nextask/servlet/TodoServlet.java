@@ -2,15 +2,13 @@ package org.example.nextask.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import org.example.nextask.dao.KategorieDAO;
 import org.example.nextask.dao.ToDoDAO;
 import org.example.nextask.dao.UserDAO;
 import org.example.nextask.model.Kategorie;
 import org.example.nextask.model.ToDo;
+import org.example.nextask.model.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,34 +20,45 @@ public class TodoServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
+
         KategorieDAO catdao = new KategorieDAO();
         ToDoDAO Tododao = new ToDoDAO();
         UserDAO userdao = new UserDAO();
         ToDo todo = new ToDo();
 
-        String cookieUsername = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (c.getName().equals("username")) {
-                    cookieUsername = c.getValue();
-                    break;
-                }
-            }
-        }
-
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-        LocalDate date = LocalDate.parse(request.getParameter("duedate"));
+        String duedateStr = request.getParameter("duedate");
+        LocalDate date = duedateStr.isEmpty() ? LocalDate.now() : LocalDate.parse(duedateStr);
         String categoryRequest = request.getParameter("category");
-        Kategorie category = catdao.getAllKategorieByUserAndName(userdao.searchUserByUsername(cookieUsername).getUserID(), categoryRequest);
+        Kategorie category = catdao.getAllKategorieByUserAndName(user.getUserID(), categoryRequest);
+
+        if (category == null) {
+            request.setAttribute("error", "Can't find category");
+            request.getRequestDispatcher("/sites/addTodo.jsp").forward(request, response);
+            return;
+        }
 
         todo.setTitle(title);
         todo.setDescription(description);
         todo.setAblaufdatum(date);
         todo.setKategorie(category);
         todo.setDone(false);
+        todo.setUser(user);
 
+        Tododao.createToDo(todo);
+
+        request.getRequestDispatcher("/sites/addTodo.jsp").forward(request, response);
     }
 
     /**

@@ -55,7 +55,7 @@
 
                 <div class="form-group">
                     <label for="kategorie">Category</label>
-                    <select id="kategorie" name="kategorieId">
+                    <select id="kategorie" name="kategorie">
                         <option value="" disabled selected>Select category...</option>
                         <% for (Kategorie category : categories) { %>
                         <option value="<%= category.getKategorieID() %>"
@@ -74,6 +74,7 @@
 
         </form>
     </div>
+    <a class="addBtn" href="${pageContext.request.contextPath}/sites/addCategory.jsp">+</a>
 </main>
 
 </body>

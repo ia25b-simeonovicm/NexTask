@@ -43,7 +43,7 @@ public class KategorieDAO {
     public List<Kategorie> getAllCategories() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
-            return em.createQuery("SELECT u FROM User u", Kategorie.class).getResultList();
+            return em.createQuery("SELECT k FROM Kategorie k", Kategorie.class).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
