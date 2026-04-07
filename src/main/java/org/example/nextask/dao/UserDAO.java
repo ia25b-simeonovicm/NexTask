@@ -83,11 +83,20 @@ public class UserDAO {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
+            em.createQuery("DELETE FROM ToDo t WHERE t.User.UserID = :id")
+                    .setParameter("id", id)
+                    .executeUpdate();
+
+            em.createQuery("DELETE FROM Kategorie k WHERE k.User.UserID = :id")
+                    .setParameter("id", id)
+                    .executeUpdate();
+
             User user = em.find(User.class, id);
             if (user != null) {
                 em.remove(user);
             }
-            em.getTransaction().commit();
+
+            em.getTransaction().commit();;
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
