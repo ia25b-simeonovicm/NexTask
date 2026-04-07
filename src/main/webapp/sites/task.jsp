@@ -1,3 +1,6 @@
+<%@ page import="org.example.nextask.dao.KategorieDAO" %>
+<%@ page import="org.example.nextask.model.User" %>
+<%@ page import="org.example.nextask.dao.ToDoDAO" %>
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,6 +10,13 @@
 <c:if test="${empty sessionScope.user}">
     <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
 </c:if>
+<%
+    User user = (User) session.getAttribute("user");
+    KategorieDAO katdao = new KategorieDAO();
+    ToDoDAO tododao = new ToDoDAO();
+    request.setAttribute("categories", katdao.getAllKategorieByUser(user.getUserID()));
+    request.setAttribute("todos", tododao.getAllToDoByUser(user.getUserID()));
+%>
 
 <!DOCTYPE html>
 <html lang="de">

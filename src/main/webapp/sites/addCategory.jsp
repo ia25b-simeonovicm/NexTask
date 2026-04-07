@@ -10,6 +10,11 @@
 <c:if test="${empty sessionScope.user}">
     <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
 </c:if>
+<%
+    User user = (User) session.getAttribute("user");
+    KategorieDAO katDao = new KategorieDAO();
+    request.setAttribute("categories", katDao.getAllKategorieByUser(user.getUserID()));
+%>
 
 <html>
 <head>
@@ -62,7 +67,7 @@
                                  style="background: ${category.color}">
                                 <span class="kategorie-name">${category.name}</span>
                                 <form action="${pageContext.request.contextPath}/deleteCategory"
-                                        method="post" class="delete-form">
+                                      method="post" class="delete-form">
                                     <input type="hidden" name="kategorieId"
                                            value="${category.kategorieID}">
                                     <button type="submit"
@@ -78,5 +83,4 @@
     </div>
 </main>
 </body>
-
 </html>

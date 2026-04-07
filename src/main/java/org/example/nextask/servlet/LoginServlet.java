@@ -63,7 +63,6 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/sites/task.jsp").forward(request, response);
         } else {
             request.setAttribute("error_signIn", "Falsches Passwort.");
-            request.setAttribute("categories", catdao.getAllKategorieByUser(user.getUserID()));
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
