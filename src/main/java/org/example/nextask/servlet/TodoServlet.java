@@ -39,9 +39,14 @@ public class TodoServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         String duedateStr = request.getParameter("duedate");
-        LocalDate date = duedateStr.isEmpty() ? LocalDate.now() : LocalDate.parse(duedateStr);
-        String categoryRequest = request.getParameter("category");
-        Kategorie category = catdao.getAllKategorieByUserAndName(user.getUserID(), categoryRequest);
+        LocalDate date;
+        if (duedateStr == null || duedateStr.isEmpty()) {
+            date = LocalDate.now();
+        } else {
+            date = LocalDate.parse(duedateStr);
+        }
+        int categoryId = Integer.parseInt(request.getParameter("kategorie"));
+        Kategorie category = catdao.searchKategorieById(categoryId);
 
         if (category == null) {
             request.setAttribute("error", "Can't find category");
@@ -58,7 +63,7 @@ public class TodoServlet extends HttpServlet {
 
         Tododao.createToDo(todo);
 
-        request.getRequestDispatcher("/sites/addTodo.jsp").forward(request, response);
+        request.getRequestDispatcher("/sites/task.jsp").forward(request, response);
     }
 
     /**

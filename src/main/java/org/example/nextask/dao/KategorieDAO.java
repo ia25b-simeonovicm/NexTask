@@ -35,7 +35,7 @@ public class KategorieDAO {
                     .setParameter("userID", userID)
                     .setParameter("name", name)
                     .getSingleResult();
-        } catch (Exception e) {
+        } catch (jakarta.persistence.NoResultException e) {
             e.printStackTrace();
             return null;
         }

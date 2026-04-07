@@ -61,7 +61,7 @@
             <div class="kategorie-item">
                 <div class="kategorie-color" style="background: <%= kat.getColor() %>"></div>
                 <span class="kategorie-name"><%= kat.getName() %></span>
-                <form action="${pageContext.request.contextPath}/deleteKategorie" method="post" class="delete-form">
+                <form action="${pageContext.request.contextPath}/deleteCategory" method="post" class="delete-form">
                     <input type="hidden" name="kategorieId" value="<%= kat.getKategorieID() %>">
                     <button type="submit" class="btn-delete">✕</button>
                 </form>

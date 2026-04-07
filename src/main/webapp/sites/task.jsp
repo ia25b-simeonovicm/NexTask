@@ -32,10 +32,9 @@
 </head>
 <style>
     <% for (Kategorie category : categories) { %>
-    .category-<%= category.getName() %> {
+    .category-<%= category.getName().replace(" ", "-") %> {
         background: <%= category.getColor() %>;
     }
-
     <% } %>
 </style>
 <body>
@@ -49,18 +48,15 @@
 <main class="grid-container" id="todo-container">
     <% if (!todos.isEmpty()) { %>
     <% for (ToDo todo : todos) { %>
-    <div class="todo-card category-<%= todo.getKategorie() %>">
+    <div class="todo-card category-<%= todo.getKategorie().getName().replace(" ", "-") %>">
         <div class="todo-content">
-            <div class="todo-category-badge"><%= todo.getKategorie() %>
-            </div>
-            <div class="todo-title"><%= todo.getTitle() %>
-            </div>
-            <div class="todo-desc"><%= todo.getDescription() %>
-            </div>l
+            <div class="todo-category-badge"><%= todo.getKategorie().getName() %></div>
+            <div class="todo-title"><%= todo.getTitle() %></div>
+            <div class="todo-desc"><%= todo.getDescription() %></div>
         </div>
     </div>
-    <% }
-    } else { %>
+    <% } %>
+    <% } else { %>
     <div>Keine Todos erstellt...</div>
     <% } %>
     <a class="addBtn" href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
