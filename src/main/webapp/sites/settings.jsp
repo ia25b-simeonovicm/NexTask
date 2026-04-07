@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -15,14 +14,12 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
-    <div class="nav-brand">
-    </div>
+    <div class="nav-brand"></div>
     <nav>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">Tasks</a>
         <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item">Categories</a>
-        <a href="${pageContext.request.contextPath}/sites/settings.jsp"
-           class="nav-item active">${sessionScope.user.username}</a>
+        <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item active">${sessionScope.user.username}</a>
     </nav>
 </nav>
 
@@ -30,7 +27,7 @@
 <main class="settings-main">
     <div class="settings-wrapper">
 
-        <!-- PROFILE SECTION -->
+        <!-- 1. PROFILE SECTION -->
         <form action="${pageContext.request.contextPath}/update" method="post">
             <section class="settings-section">
                 <h2 class="section-label">Profile</h2>
@@ -40,46 +37,63 @@
                             <input type="hidden" name="action" value="profile">
                             <label class="field-label">Username</label>
                             <input type="text" class="field-input" name="username"
-                                   value="${not empty sessionScope.user ? sessionScope.user.username : ''}"
-                                   placeholder="Dein Username">
+                                   value="${sessionScope.user.username}" placeholder="Dein Username">
                         </div>
                         <div class="field-group">
                             <label class="field-label">E-Mail</label>
                             <input type="email" class="field-input" name="email"
-                                   value="${not empty sessionScope.user ? sessionScope.user.email : ''}"
-                                   placeholder="deine@email.com">
+                                   value="${sessionScope.user.email}" placeholder="deine@email.com">
                         </div>
                     </div>
+                    <!-- Button zum Speichern des Profils -->
                     <div class="card-actions">
-                        <button class="btn-danger">Ausloggen</button>
-                        <button class="btn-save">Speichern</button>
+                        <button type="submit" class="btn-save">Profil Speichern</button>
                     </div>
                 </div>
             </section>
         </form>
+
+        <!-- 2. ACCOUNT / PASSWORT SECTION -->
         <form action="${pageContext.request.contextPath}/update" method="post">
-            <!-- ACCOUNT SECTION -->
             <section class="settings-section">
-                <h2 class="section-label">Account</h2>
+                <h2 class="section-label">Passwort ändern</h2>
                 <div class="settings-card">
                     <div class="card-row">
                         <div class="field-group">
                             <input type="hidden" name="action" value="password">
-                            <label class="field-label">Passwort ändern</label>
-                            <input type="password" class="field-input" placeholder="Altes Passwort" name="old_password">
+                            <label class="field-label">Altes Passwort</label>
+                            <input type="password" class="field-input" name="old_password" placeholder="Altes Passwort">
                         </div>
                         <div class="field-group">
-                            <label class="field-label">Bestätigen</label>
-                            <input type="password" class="field-input" placeholder="Neues Passwort" name="newpassword">
+                            <label class="field-label">Neues Passwort</label>
+                            <input type="password" class="field-input" name="newpassword" placeholder="Neues Passwort">
                         </div>
                     </div>
+                    <!-- Button zum Speichern des Passworts -->
                     <div class="card-actions">
-                        <button class="btn-save">Speichern</button>
-                        <button class="btn-danger">Account löschen</button>
+                        <button type="submit" class="btn-save">Passwort Speichern</button>
                     </div>
                 </div>
             </section>
         </form>
+
+        <!-- 3. GEFAHRENZONE (Ausloggen & Löschen) -->
+        <section class="settings-section">
+            <h2 class="section-label">Weitere Optionen</h2>
+            <div class="settings-card">
+                <div class="card-actions" style="justify-content: flex-start; gap: 15px;">
+                    <!-- Ausloggen -->
+                    <a href="${pageContext.request.contextPath}/logout" class="btn-danger" style="text-decoration: none; text-align: center;">Ausloggen</a>
+
+                    <!-- Account Löschen Formular -->
+                    <form action="${pageContext.request.contextPath}/update" method="post" style="margin: 0;">
+                        <input type="hidden" name="action" value="deleteAccount">
+                        <button type="submit" class="btn-danger">Account löschen</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
     </div>
 </main>
 
