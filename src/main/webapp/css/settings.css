@@ -278,6 +278,10 @@ body {
     .card-row       { flex-direction: column; }
 }
 
-.error-message{
-    color: var(--danger);
+.error-message {
+    text-align: center;
+    padding: 16px;
+    background: var(--danger);
+    color: white;
+    border-radius: 12px;
 }
