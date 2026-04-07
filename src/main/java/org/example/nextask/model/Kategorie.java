@@ -2,7 +2,6 @@ package org.example.nextask.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,37 +19,37 @@ public class Kategorie {
     @JoinColumn(name = "UserID")
     private User User;
 
-    @OneToMany(mappedBy = "Kategorie")
-    private List<ToDo> ToDo = new ArrayList<>();
+    @OneToMany(mappedBy = "Kategorie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ToDo> Todo;
 
     @Column(name = "color")
-    private String color;
+    private String Color;
 
     public Kategorie() {
     }
 
-    public Kategorie(int kategorieID, String name, User user, List<ToDo> toDo, String color) {
-        this.KategorieID = kategorieID;
-        this.Name = name;
-        this.User = user;
-        this.ToDo = toDo;
-        this.color = color;
+    public Kategorie(int kategorieID, String name, User user, List<ToDo> todo, String color) {
+        KategorieID = kategorieID;
+        Name = name;
+        User = user;
+        Todo = todo;
+        Color = color;
     }
 
     public int getKategorieID() {
         return KategorieID;
     }
 
-    public void setKategorieID(int KategorieID) {
-        this.KategorieID = KategorieID;
+    public void setKategorieID(int kategorieID) {
+        KategorieID = kategorieID;
     }
 
     public String getName() {
         return Name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        Name = name;
     }
 
     public User getUser() {
@@ -61,19 +60,19 @@ public class Kategorie {
         User = user;
     }
 
-    public List<ToDo> getToDo() {
-        return ToDo;
+    public List<ToDo> getTodo() {
+        return Todo;
     }
 
-    public void setToDo(List<ToDo> toDo) {
-        ToDo = toDo;
+    public void setTodo(List<ToDo> todo) {
+        Todo = todo;
     }
 
     public String getColor() {
-        return color;
+        return Color;
     }
 
     public void setColor(String color) {
-        this.color = color;
+        Color = color;
     }
 }

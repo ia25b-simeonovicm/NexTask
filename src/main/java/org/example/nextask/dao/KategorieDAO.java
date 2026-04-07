@@ -2,7 +2,6 @@ package org.example.nextask.dao;
 
 import jakarta.persistence.EntityManager;
 import org.example.nextask.model.Kategorie;
-import org.example.nextask.model.ToDo;
 import org.example.nextask.util.JPAUtil;
 
 import java.util.ArrayList;
@@ -86,6 +85,10 @@ public class KategorieDAO {
             em.getTransaction().begin();
             Kategorie kategorie = em.find(Kategorie.class, id);
             if (kategorie != null) {
+                // Erst alle Todos dieser Kategorie löschen
+                em.createQuery("DELETE FROM ToDo t WHERE t.Kategorie.KategorieID = :id")
+                        .setParameter("id", id)
+                        .executeUpdate();
                 em.remove(kategorie);
             }
             em.getTransaction().commit();

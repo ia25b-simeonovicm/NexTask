@@ -29,7 +29,7 @@ public class deleteKategorie extends HttpServlet {
         KategorieDAO dao = new KategorieDAO();
         String param = request.getParameter("kategorieId");
         if (param == null) {
-            response.sendRedirect(request.getContextPath() + "/addCategory.jsp");
+            response.sendRedirect(request.getContextPath() + "/category");
             return;
         }
         int kategorieId = Integer.parseInt(param);

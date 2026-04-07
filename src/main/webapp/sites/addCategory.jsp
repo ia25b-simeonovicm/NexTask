@@ -16,8 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kategorien</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tasks.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/categories.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/categories.css">
 </head>
 <body>
 <header class="navbar">
@@ -58,15 +57,12 @@
                 <c:otherwise>
                     <c:forEach var="category" items="${categories}">
                         <div class="kategorie-item">
-                            <div class="kategorie-color"
-                                 style="background: ${category.color}">
-                                <span class="kategorie-name">${category.name}</span>
-                                <form action="${pageContext.request.contextPath}/deleteCategory" method="post"
-                                      class="delete-form">
-                                    <input type="hidden" name="kategorieId" value="${category.kategorieID}">
-                                    <button type="submit" class="btn-delete">x</button>
-                                </form>
-                            </div>
+                            <div class="kategorie-color" style="background: ${category.color}"></div>
+                            <span class="kategorie-name">${category.name}</span>
+                            <form action="${pageContext.request.contextPath}/deleteCategory" method="post" class="delete-form">
+                                <input type="hidden" name="kategorieId" value="${category.kategorieID}">
+                                <button type="submit" class="btn-delete">x</button>
+                            </form>
                         </div>
                     </c:forEach>
                 </c:otherwise>
