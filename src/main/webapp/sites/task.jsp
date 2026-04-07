@@ -41,8 +41,8 @@
     <nav>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item active">Tasks</a>
-        <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item">Categories</a>
-        <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item">${sessionScope.user.username}</a>
+        <a href="${pageContext.request.contextPath}/category" class="nav-item">Categories</a>
+        <span class="nav-item">${sessionScope.user.username}</span>
     </nav>
 </header>
 
@@ -64,7 +64,7 @@
         </c:otherwise>
     </c:choose>
 
-    <a class="addBtn" href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
+    <a class="addBtn" href="${pageContext.request.contextPath}/category">+</a>
 </main>
 </body>
 </html>

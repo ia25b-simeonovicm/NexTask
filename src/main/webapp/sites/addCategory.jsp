@@ -9,11 +9,6 @@
 <c:if test="${empty sessionScope.user}">
     <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
 </c:if>
-<%
-    User user = (User) session.getAttribute("user");
-    KategorieDAO katDao = new KategorieDAO();
-    request.setAttribute("categories", katDao.getAllKategorieByUser(user.getUserID()));
-%>
 
 <html>
 <head>
@@ -30,8 +25,8 @@
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">← Back</a>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">Tasks</a>
-        <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item active">Categories</a>
-        <span class="nav-item">👤 ${sessionScope.user.username}</span>
+        <a href="${pageContext.request.contextPath}/category" class="nav-item active">Categories</a>
+        <span class="nav-item">${sessionScope.user.username}</span>
     </nav>
 </header>
 <main>

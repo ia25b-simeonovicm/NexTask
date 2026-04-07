@@ -21,7 +21,7 @@
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item active">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">Tasks</a>
         <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item">Categories</a>
-        <span class="nav-item">👤 ${sessionScope.user.username}</span>
+        <span class="nav-item">${sessionScope.user.username}</span>
     </nav>
 </header>
 </body>

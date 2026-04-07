@@ -34,9 +34,27 @@ public class KategorieServlet extends HttpServlet {
         cat.setName(name);
         cat.setColor(color);
         cat.setUser(user);
-
         catdao.createKategorie(cat);
-        request.setAttribute("categories", catdao.getAllKategorieByUser(user.getUserID()));
+
+        response.sendRedirect(request.getContextPath() + "/category");
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
+
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
+
+        KategorieDAO katdao = new KategorieDAO();
+        request.setAttribute("categories", katdao.getAllKategorieByUser(user.getUserID()));
         request.getRequestDispatcher("/sites/addCategory.jsp").forward(request, response);
     }
 }

@@ -4,7 +4,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.example.nextask.dao.KategorieDAO;
-import org.example.nextask.model.Kategorie;
 import org.example.nextask.model.User;
 
 import java.io.IOException;
@@ -36,6 +35,6 @@ public class deleteKategorie extends HttpServlet {
         int kategorieId = Integer.parseInt(param);
         dao.deleteKategorie(kategorieId);
 
-        request.getRequestDispatcher("/sites/addCategory.jsp").forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/category");
     }
 }
