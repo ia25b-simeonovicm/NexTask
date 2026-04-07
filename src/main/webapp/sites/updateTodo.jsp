@@ -2,10 +2,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ page import="org.example.nextask.model.User" %>
+<%@ page import="org.example.nextask.dao.KategorieDAO" %>
+
+
 <%-- Verweist auf Login page falls nicht eingeloggt --%>
 <c:if test="${empty sessionScope.user}">
     <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
 </c:if>
+
+<%
+    User user = (User) session.getAttribute("user");
+    KategorieDAO katdao = new KategorieDAO();
+    request.setAttribute("categories", katdao.getAllKategorieByUser(user.getUserID()));
+%>
 
 <html>
 <head>
@@ -13,6 +23,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo bearbeiten</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tasks.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addTodo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/updateTodo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/categories.css">
 </head>
 <body>
@@ -30,7 +42,7 @@
     <div class="form-container">
         <h1 class="form-title">ToDo bearbeiten</h1>
 
-        <form action="${pageContext.request.contextPath}/editTask" method="post" class="todo-form">
+        <form action="${pageContext.request.contextPath}/todoUpdate" method="post" class="todo-form">
             <input type="hidden" name="toDoID" value="${todo.toDoID}">
 
             <div class="form-row">
@@ -51,7 +63,7 @@
                         <option value="">-- Keine Kategorie --</option>
                         <c:forEach var="cat" items="${categories}">
                             <option value="${cat.kategorieID}"
-                                ${cat.kategorieID == todo.kategorie.kategorieID ? 'selected' : ''}>
+                                ${todo.kategorie != null && cat.kategorieID == todo.kategorie.kategorieID ? 'selected' : ''}>
                                     ${cat.name}
                             </option>
                         </c:forEach>
@@ -60,8 +72,8 @@
 
                 <div class="form-group form-group--checkbox">
                     <label class="checkbox-label">
-                        <input type="checkbox" name="isDone" value="true" ${todo.done ? 'checked' : ''}>
                         Status: Erledigt
+                        <input type="checkbox" name="isDone" value="true" ${todo.done ? 'checked' : ''}>
                     </label>
                 </div>
             </div>

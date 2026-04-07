@@ -51,7 +51,7 @@
     <c:choose>
         <c:when test="${not empty todos}">
             <c:forEach var="todo" items="${todos}">
-                <a href="${pageContext.request.contextPath}/todo?id=${todo.toDoID}" class="todo-card-link">
+                <a href="${pageContext.request.contextPath}/todoUpdate?id=${todo.toDoID}" class="todo-card-link">
                     <div class="todo-card category-${fn:replace(todo.kategorie.name, ' ', '-')}">
                         <div class="todo-content">
                             <div class="todo-category-badge">${todo.kategorie.name}</div>
