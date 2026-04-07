@@ -5,14 +5,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Kategorie")
+@Table(name = "Kategorie", uniqueConstraints = {@UniqueConstraint(columnNames = {"UserID", "Name"})})
 public class Kategorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "KategorieID")
     private int KategorieID;
 
-    @Column(name = "Name", unique = true, nullable = false, length = 50)
+    @Column(name = "Name", nullable = false, length = 50)
     private String Name;
 
     @ManyToOne

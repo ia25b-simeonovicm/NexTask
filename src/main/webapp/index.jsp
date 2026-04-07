@@ -1,6 +1,15 @@
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<c:if test="${not empty sessionScope.user}">
+    <%
+        session.invalidate();
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
+    %>
+</c:if>
+
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <title>Login/Register</title>

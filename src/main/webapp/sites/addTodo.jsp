@@ -30,7 +30,7 @@
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">← Back</a>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item active">Tasks</a>
-        <a href="${pageContext.request.contextPath}/category" class="nav-item active">Categories</a>
+        <a href="${pageContext.request.contextPath}/category" class="nav-item">Categories</a>
         <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item">${sessionScope.user.username}</a>
          </nav>
 </header>
@@ -51,11 +51,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="ablaufdatum">Due Date</label>
-                    <input type="date" id="ablaufdatum" name="duedatum">
+                    <input type="date" id="ablaufdatum" name="duedate">
                 </div>
                 <div class="form-group">
                     <label for="kategorie">Category</label>
-                    <select id="kategorie" name="kategorie">
+                    <select id="kategorie" name="kategorie" required>
                         <option value="" disabled selected>Select category...</option>
                         <c:forEach var="category" items="${categories}">
                             <option value="${category.kategorieID}">

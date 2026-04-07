@@ -64,7 +64,7 @@
         </c:otherwise>
     </c:choose>
 
-    <a class="addBtn" href="${pageContext.request.contextPath}/category">+</a>
+    <a class="addBtn" href="${pageContext.request.contextPath}/sites/addTodo.jsp">+</a>
 </main>
 </body>
 </html>

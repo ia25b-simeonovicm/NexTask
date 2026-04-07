@@ -33,7 +33,6 @@ public class TodoServlet extends HttpServlet {
 
         KategorieDAO catdao = new KategorieDAO();
         ToDoDAO Tododao = new ToDoDAO();
-        UserDAO userdao = new UserDAO();
         ToDo todo = new ToDo();
 
         String title = request.getParameter("title");
@@ -45,7 +44,15 @@ public class TodoServlet extends HttpServlet {
         } else {
             date = LocalDate.parse(duedateStr);
         }
-        int categoryId = Integer.parseInt(request.getParameter("kategorie"));
+
+        String kategorieStr = request.getParameter("kategorie");
+        if (kategorieStr == null || kategorieStr.trim().isEmpty()) {
+            request.setAttribute("error", "Bitte wähle eine Kategorie aus.");
+            request.getRequestDispatcher("/sites/addTodo.jsp").forward(request, response);
+            return;
+        }
+
+        int categoryId = Integer.parseInt(kategorieStr);
         Kategorie category = catdao.searchKategorieById(categoryId);
 
         if (category == null) {
