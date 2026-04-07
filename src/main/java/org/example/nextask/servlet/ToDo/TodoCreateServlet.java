@@ -1,11 +1,10 @@
-package org.example.nextask.servlet;
+package org.example.nextask.servlet.ToDo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.example.nextask.dao.KategorieDAO;
 import org.example.nextask.dao.ToDoDAO;
-import org.example.nextask.dao.UserDAO;
 import org.example.nextask.model.Kategorie;
 import org.example.nextask.model.ToDo;
 import org.example.nextask.model.User;
@@ -13,8 +12,8 @@ import org.example.nextask.model.User;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet("/todo")
-public class TodoServlet extends HttpServlet {
+@WebServlet("/todoCreate")
+public class TodoCreateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
@@ -71,13 +70,5 @@ public class TodoServlet extends HttpServlet {
         Tododao.createToDo(todo);
 
         request.getRequestDispatcher("/sites/task.jsp").forward(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPut(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
-
     }
 }

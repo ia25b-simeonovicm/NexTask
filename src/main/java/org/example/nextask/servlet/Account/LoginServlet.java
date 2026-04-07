@@ -1,4 +1,4 @@
-package org.example.nextask.servlet;
+package org.example.nextask.servlet.Account;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

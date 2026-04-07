@@ -2,9 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page import="org.example.nextask.model.User" %>
-<%@ page import="org.example.nextask.dao.KategorieDAO" %>
-
 <%-- Verweist auf Login page falls nicht eingeloggt --%>
 <c:if test="${empty sessionScope.user}">
     <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
@@ -25,7 +22,8 @@
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">Tasks</a>
         <a href="${pageContext.request.contextPath}/category" class="nav-item active">Categories</a>
-        <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item">${sessionScope.user.username}</a>
+        <a href="${pageContext.request.contextPath}/sites/settings.jsp"
+           class="nav-item">${sessionScope.user.username}</a>
     </nav>
 </header>
 <main>
@@ -59,7 +57,8 @@
                         <div class="kategorie-item">
                             <div class="kategorie-color" style="background: ${category.color}"></div>
                             <span class="kategorie-name">${category.name}</span>
-                            <form action="${pageContext.request.contextPath}/deleteCategory" method="post" class="delete-form">
+                            <form action="${pageContext.request.contextPath}/category" method="post"
+                                  class="delete-form">
                                 <input type="hidden" name="kategorieId" value="${category.kategorieID}">
                                 <button type="submit" class="btn-delete">x</button>
                             </form>

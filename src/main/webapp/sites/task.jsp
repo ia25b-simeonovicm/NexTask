@@ -42,7 +42,8 @@
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item active">Tasks</a>
         <a href="${pageContext.request.contextPath}/category" class="nav-item">Categories</a>
-        <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item">${sessionScope.user.username}</a>
+        <a href="${pageContext.request.contextPath}/sites/settings.jsp"
+           class="nav-item">${sessionScope.user.username}</a>
     </nav>
 </header>
 
@@ -50,13 +51,15 @@
     <c:choose>
         <c:when test="${not empty todos}">
             <c:forEach var="todo" items="${todos}">
-                <div class="todo-card category-${fn:replace(todo.kategorie.name, ' ', '-')}">
-                    <div class="todo-content">
-                        <div class="todo-category-badge">${todo.kategorie.name}</div>
-                        <div class="todo-title">${todo.title}</div>
-                        <div class="todo-desc">${todo.description}</div>
+                <a href="${pageContext.request.contextPath}/todo?id=${todo.toDoID}" class="todo-card-link">
+                    <div class="todo-card category-${fn:replace(todo.kategorie.name, ' ', '-')}">
+                        <div class="todo-content">
+                            <div class="todo-category-badge">${todo.kategorie.name}</div>
+                            <div class="todo-title">${todo.title}</div>
+                            <div class="todo-desc">${todo.description}</div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </c:when>
         <c:otherwise>
