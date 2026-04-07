@@ -13,7 +13,7 @@ public class ToDo {
     @Column(name = "ToDoID")
     private int ToDoID;
 
-    @Column(name = "Title", unique = true, nullable = false, length = 50)
+    @Column(name = "Title", nullable = false, length = 50)
     private String Title;
 
     @Column(name = "Description", length = 350)
