@@ -277,3 +277,7 @@ body {
     .settings-card  { padding: 22px 18px; }
     .card-row       { flex-direction: column; }
 }
+
+.error-message{
+    color: var(--danger);
+}

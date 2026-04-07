@@ -69,6 +69,11 @@
                             <input type="password" class="field-input" name="newpassword" placeholder="Neues Passwort">
                         </div>
                     </div>
+                    <c:if test="${not empty error}">
+                        <div class="error-message">
+                                ${error}
+                        </div>
+                    </c:if>
                     <!-- Button zum Speichern des Passworts -->
                     <div class="card-actions">
                         <button type="submit" class="btn-save">Passwort Speichern</button>
