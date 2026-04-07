@@ -20,7 +20,7 @@
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">← Back</a>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item active">Tasks</a>
-        <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item active">Categories</a>
+        <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item">Categories</a>
         <span class="nav-item">👤 ${sessionScope.user.username}</span>
     </nav>
 </header>
