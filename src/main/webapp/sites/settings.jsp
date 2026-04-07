@@ -30,19 +30,21 @@
     <div class="settings-wrapper">
 
         <!-- PROFILE SECTION -->
+        <form action="${pageContext.request.contextPath}/update" method="post">
         <section class="settings-section">
             <h2 class="section-label">Profile</h2>
             <div class="settings-card">
                 <div class="card-row">
                     <div class="field-group">
+                        <input type="hidden" name="action" value="profile">
                         <label class="field-label">Username</label>
-                        <input type="text" class="field-input"
+                        <input type="text" class="field-input" name="username"
                                value="${not empty sessionScope.user ? sessionScope.user.username : ''}"
                                placeholder="Dein Username">
                     </div>
                     <div class="field-group">
                         <label class="field-label">E-Mail</label>
-                        <input type="email" class="field-input"
+                        <input type="email" class="field-input" name="email"
                                value="${not empty sessionScope.user ? sessionScope.user.email : ''}"
                                placeholder="deine@email.com">
                     </div>
@@ -52,19 +54,21 @@
                 </div>
             </div>
         </section>
-
+        </form>
+        <form action="${pageContext.request.contextPath}/update" method="post">
         <!-- ACCOUNT SECTION -->
         <section class="settings-section">
             <h2 class="section-label">Account</h2>
             <div class="settings-card">
                 <div class="card-row">
                     <div class="field-group">
+                        <input type="hidden" name="action" value="password">
                         <label class="field-label">Passwort ändern</label>
-                        <input type="password" class="field-input" placeholder="Neues Passwort">
+                        <input type="password" class="field-input" placeholder="Altes Passwort" name="old_password">
                     </div>
                     <div class="field-group">
                         <label class="field-label">Bestätigen</label>
-                        <input type="password" class="field-input" placeholder="Passwort wiederholen">
+                        <input type="password" class="field-input" placeholder="Neues Passwort" name="newpassword">
                     </div>
                 </div>
                 <div class="card-actions">
@@ -73,6 +77,7 @@
                 </div>
             </div>
         </section>
+        </form>
 
     </div>
 </main>
