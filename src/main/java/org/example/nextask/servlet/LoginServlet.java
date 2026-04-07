@@ -6,6 +6,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
+import org.example.nextask.dao.KategorieDAO;
 import org.example.nextask.dao.UserDAO;
 import org.example.nextask.model.User;
 
@@ -25,7 +26,8 @@ public class LoginServlet extends HttpServlet {
 
         System.out.println("username: " + username);
 
-        UserDAO dao = new UserDAO();
+        UserDAO userdao = new UserDAO();
+        KategorieDAO catdao = new KategorieDAO();
         User user = null;
 
         if (username == null || password == null) {
@@ -34,13 +36,13 @@ public class LoginServlet extends HttpServlet {
 
         if (username.contains("@")) {
             try {
-                user = dao.searchUserByEmail(username);
+                user = userdao.searchUserByEmail(username);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                user = dao.searchUserByUsername(username);
+                user = userdao.searchUserByUsername(username);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -61,6 +63,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/sites/task.jsp").forward(request, response);
         } else {
             request.setAttribute("error_signIn", "Falsches Passwort.");
+            request.setAttribute("categories", catdao.getAllKategorieByUser(user.getUserID()));
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

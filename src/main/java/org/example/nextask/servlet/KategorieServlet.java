@@ -12,8 +12,8 @@ import java.io.IOException;
 @WebServlet("/category")
 public class KategorieServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
@@ -36,7 +36,7 @@ public class KategorieServlet extends HttpServlet {
         cat.setUser(user);
 
         catdao.createKategorie(cat);
-
+        request.setAttribute("categories", catdao.getAllKategorieByUser(user.getUserID()));
         request.getRequestDispatcher("/sites/addCategory.jsp").forward(request, response);
     }
 }
