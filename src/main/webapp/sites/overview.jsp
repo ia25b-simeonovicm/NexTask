@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overview</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tasks.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/overview.css">
 </head>
 <body>
 <header class="navbar">
@@ -26,8 +27,8 @@
         </nav>
     </nav>
 </header>
-<main>
-    <div>
+<main class="container">
+    <div class="construction">
         Under Construction🏗️
     </div>
 </main>
