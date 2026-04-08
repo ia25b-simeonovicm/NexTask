@@ -37,7 +37,7 @@
 <main>
     <div class="form-container">
         <h1 class="form-title">New Task</h1>
-        <form action="${pageContext.request.contextPath}/todo" method="post" class="todo-form">
+        <form action="${pageContext.request.contextPath}/todoCreate" method="post" class="todo-form">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title" placeholder="Task title..." required
