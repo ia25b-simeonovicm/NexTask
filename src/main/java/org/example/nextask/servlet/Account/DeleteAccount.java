@@ -16,8 +16,16 @@ public class DeleteAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
         HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
 
         User sessionUser = (User) session.getAttribute("user");
+        if (sessionUser == null) {
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
+        }
         String action = request.getParameter("action");
 
         if ("deleteAccount".equals(action)) {

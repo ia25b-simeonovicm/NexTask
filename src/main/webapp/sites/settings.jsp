@@ -3,10 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-    User user = (User) session.getAttribute("user");
-    int userid = user.getUserID();
-%>
+<c:if test="${empty sessionScope.user}">
+    <c:redirect url="${pageContext.request.contextPath}/index.jsp"/>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -27,7 +26,7 @@
     <nav>
         <a href="${pageContext.request.contextPath}/sites/overview.jsp" class="nav-item">Overview</a>
         <a href="${pageContext.request.contextPath}/sites/task.jsp" class="nav-item">Tasks</a>
-        <a href="${pageContext.request.contextPath}/sites/addCategory.jsp" class="nav-item">Categories</a>
+        <a href="${pageContext.request.contextPath}/category" class="nav-item">Categories</a>
         <a href="${pageContext.request.contextPath}/sites/settings.jsp" class="nav-item active">${sessionScope.user.username}</a>
     </nav>
 </nav>

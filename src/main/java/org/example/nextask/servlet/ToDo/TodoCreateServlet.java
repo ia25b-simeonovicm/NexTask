@@ -65,6 +65,7 @@ public class TodoCreateServlet extends HttpServlet {
         todo.setAblaufdatum(date);
         todo.setKategorie(category);
         todo.setDone(false);
+        todo.setCreatedAt(LocalDate.now());
         todo.setUser(user);
 
         Tododao.createToDo(todo);

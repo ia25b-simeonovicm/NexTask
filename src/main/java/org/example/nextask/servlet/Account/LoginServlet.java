@@ -6,7 +6,6 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-import org.example.nextask.dao.KategorieDAO;
 import org.example.nextask.dao.UserDAO;
 import org.example.nextask.model.User;
 
@@ -27,7 +26,6 @@ public class LoginServlet extends HttpServlet {
         System.out.println("username: " + username);
 
         UserDAO userdao = new UserDAO();
-        KategorieDAO catdao = new KategorieDAO();
         User user = null;
 
         if (username == null || password == null) {

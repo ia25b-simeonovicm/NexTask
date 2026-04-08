@@ -46,7 +46,9 @@ public class ToDoDAO {
             em.persist(todo);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             e.printStackTrace();
         } finally {
             em.close();
@@ -60,7 +62,9 @@ public class ToDoDAO {
             em.merge(todo);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             e.printStackTrace();
         } finally {
             em.close();
@@ -77,7 +81,9 @@ public class ToDoDAO {
             }
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             e.printStackTrace();
         } finally {
             em.close();

@@ -57,7 +57,7 @@
                         <div class="kategorie-item">
                             <div class="kategorie-color" style="background: ${category.color}"></div>
                             <span class="kategorie-name">${category.name}</span>
-                            <form action="${pageContext.request.contextPath}/category" method="post"
+                            <form action="${pageContext.request.contextPath}/deleteCategory" method="post"
                                   class="delete-form">
                                 <input type="hidden" name="kategorieId" value="${category.kategorieID}">
                                 <button type="submit" class="btn-delete">x</button>

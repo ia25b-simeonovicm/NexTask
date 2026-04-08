@@ -21,7 +21,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         //Kontrollieren ob alle input felder inhalt haben
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+        if (username == null || password == null || email == null ||
+                username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             request.setAttribute("error_signUp", "Please fill all the fields");
             request.getRequestDispatcher("index.jsp").forward(request, response);
             return;

@@ -2,12 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<c:if test="${not empty sessionScope.user}">
-    <%
+<%
+    if (session.getAttribute("user") != null) {
         session.invalidate();
         response.sendRedirect(request.getContextPath() + "/index.jsp");
-    %>
-</c:if>
+        return;
+    }
+%>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -43,7 +44,7 @@
             <input type="email" placeholder="E-Mail" name="email"/><br><br>
             <input type="password" placeholder="Password" name="password"/><br><br>
             <input type="hidden" name="browser" value="${header['user-agent']}">
-            <input id="signInSubmit" type="submit" value="Register"/>
+            <input id="signUpSubmit" type="submit" value="Register"/>
             <c:if test="${not empty error_signUp}">
                 <div class="error-message">
                         ${error_signUp}
