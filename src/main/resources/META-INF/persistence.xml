@@ -27,8 +27,8 @@
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="hello12345"/>
 
-            <!-- Hibernate Dialect -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <!-- Hibernate Dialect (auto-detected by Hibernate 6.4+) -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
             <!-- ============================================== -->
             <!-- AUTOMATISCHE SCHEMA- UND TABELLEN-ERSTELLUNG  -->
