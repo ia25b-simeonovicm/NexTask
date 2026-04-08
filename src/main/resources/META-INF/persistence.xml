@@ -11,9 +11,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Entity-Klassen -->
-        <class>org.example.nextask.model.ToDo</class>
-        <class>org.example.nextask.model.User</class>
-        <class>org.example.nextask.model.Kategorie</class>
+        <class>nextask.model.ToDo</class>
+        <class>nextask.model.User</class>
+        <class>nextask.model.Kategorie</class>
 
         <!-- Properties für Datenbankverbindung und JPA-Konfiguration -->
         <properties>

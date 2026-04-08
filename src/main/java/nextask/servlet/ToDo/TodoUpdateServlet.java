@@ -1,12 +1,12 @@
-package org.example.nextask.servlet.ToDo;
+package nextask.servlet.ToDo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.example.nextask.dao.KategorieDAO;
-import org.example.nextask.dao.ToDoDAO;
-import org.example.nextask.model.ToDo;
-import org.example.nextask.model.User;
+import nextask.dao.KategorieDAO;
+import nextask.dao.ToDoDAO;
+import nextask.model.ToDo;
+import nextask.model.User;
 
 import java.io.IOException;
 

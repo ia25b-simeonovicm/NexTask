@@ -1,4 +1,4 @@
-package org.example.nextask.servlet.Account;
+package nextask.servlet.Account;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,8 +6,8 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-import org.example.nextask.dao.UserDAO;
-import org.example.nextask.model.User;
+import nextask.dao.UserDAO;
+import nextask.model.User;
 
 @SuppressWarnings("D")
 @WebServlet("/login")

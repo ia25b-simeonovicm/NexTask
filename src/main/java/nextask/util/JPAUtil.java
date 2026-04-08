@@ -1,4 +1,4 @@
-package org.example.nextask.util;
+package nextask.util;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

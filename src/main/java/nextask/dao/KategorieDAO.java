@@ -1,25 +1,24 @@
-package org.example.nextask.dao;
+package nextask.dao;
 
 import jakarta.persistence.EntityManager;
-import org.example.nextask.model.ToDo;
-import org.example.nextask.util.JPAUtil;
-
+import nextask.model.Kategorie;
+import nextask.util.JPAUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoDAO {
-    public ToDo searchToDoById(int id) {
+public class KategorieDAO {
+    public Kategorie searchKategorieById(int id) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.find(ToDo.class, id);
+            return em.find(Kategorie.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    public List<ToDo> getAllToDoByUser(int UserID) {
+    public List<Kategorie> getAllKategorieByUser(int UserID) {
         try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
-            return em.createQuery("SELECT t FROM ToDo t WHERE t.User.UserID = :UserID", ToDo.class)
+            return em.createQuery("SELECT t FROM Kategorie t WHERE t.User.UserID = :UserID", Kategorie.class)
                     .setParameter("UserID", UserID)
                     .getResultList();
         } catch (Exception e) {
@@ -27,10 +26,23 @@ public class ToDoDAO {
             return new ArrayList<>();
         }
     }
-    public List<ToDo> getAllToDo() {
+    public Kategorie getAllKategorieByUserAndName(int userID, String name) {
+        try (EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager()) {
+            return em.createQuery(
+                            "SELECT k FROM Kategorie k WHERE k.User.UserID = :userID AND k.Name = :name",
+                            Kategorie.class)
+                    .setParameter("userID", userID)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public List<Kategorie> getAllCategories() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
-            return em.createQuery("SELECT t FROM ToDo t", ToDo.class).getResultList();
+            return em.createQuery("SELECT k FROM Kategorie k", Kategorie.class).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -39,11 +51,11 @@ public class ToDoDAO {
         }
     }
 
-    public void createToDo(ToDo todo) {
+    public void createKategorie(Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(todo);
+            em.persist(kategorie);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -55,11 +67,11 @@ public class ToDoDAO {
         }
     }
 
-    public void updateToDo(ToDo todo) {
+    public void updateKategorie(Kategorie kategorie) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(todo);
+            em.merge(kategorie);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -71,13 +83,17 @@ public class ToDoDAO {
         }
     }
 
-    public void deleteToDo(int id) {
+    public void deleteKategorie(int id) {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            ToDo todo = em.find(ToDo.class, id);
-            if (todo != null) {
-                em.remove(todo);
+            Kategorie kategorie = em.find(Kategorie.class, id);
+            if (kategorie != null) {
+                // Erst alle Todos dieser Kategorie löschen
+                em.createQuery("DELETE FROM ToDo t WHERE t.Kategorie.KategorieID = :id")
+                        .setParameter("id", id)
+                        .executeUpdate();
+                em.remove(kategorie);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

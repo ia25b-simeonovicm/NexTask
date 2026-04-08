@@ -1,4 +1,4 @@
-package org.example.nextask.model;
+package nextask.model;
 
 import jakarta.persistence.*;
 

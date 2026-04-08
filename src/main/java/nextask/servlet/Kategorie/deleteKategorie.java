@@ -1,10 +1,10 @@
-package org.example.nextask.servlet.Kategorie;
+package nextask.servlet.Kategorie;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.example.nextask.dao.KategorieDAO;
-import org.example.nextask.model.User;
+import nextask.dao.KategorieDAO;
+import nextask.model.User;
 
 import java.io.IOException;
 

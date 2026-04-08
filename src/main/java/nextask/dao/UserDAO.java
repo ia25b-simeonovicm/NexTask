@@ -1,9 +1,8 @@
-package org.example.nextask.dao;
+package nextask.dao;
 
 import jakarta.persistence.EntityManager;
-import org.example.nextask.model.ToDo;
-import org.example.nextask.model.User;
-import org.example.nextask.util.JPAUtil;
+import nextask.model.User;
+import nextask.util.JPAUtil;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.example.nextask.util;
+package nextask.util;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
